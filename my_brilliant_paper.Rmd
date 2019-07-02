@@ -1,0 +1,40 @@
+---
+title: "My_brilliant_paper"
+author: "Saras Windecker"
+date: "02/07/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# My data
+
+My data is super brilliant. Let's take a look. 
+
+```{r, results = 'hide'}
+decay_data <- read.csv('data/decay_data.csv')
+source('R/bayes_decay_model.R')
+library(greta)
+```
+
+The most important information is about decay. Let's look at the log-transformed data here:
+
+```{r}
+plot(decay_data$t, decay_data$mRem, pch = 20, cex = 0.4, 
+     xlab = 'time', 
+     ylab = 'mass')
+```
+
+I want to do a bayesian analysis of my decay. Here it is:
+
+```{r}
+mean_mass_predictions <- bayes_decay_model(decay_data)
+plot(decay_data$t, decay_data$mRem, pch = 20, cex = 0.4, 
+     xlab = 'time', 
+     ylab = 'mass')
+points(decay_data$t, mean_mass_predictions, pch = 20, col = 'red')
+```
+
+
