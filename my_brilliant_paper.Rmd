@@ -1,40 +1,32 @@
 ---
-title: "My_brilliant_paper"
+title: "my_brilliant_paper"
 author: "Saras Windecker"
-date: "02/07/2019"
-output: html_document
+date: "01/07/2019"
+output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# My data
+## R Markdown
 
-My data is super brilliant. Let's take a look. 
+Here is my decomposition data in its raw format. 
 
-```{r, results = 'hide'}
+```{r}
 decay_data <- read.csv('data/decay_data.csv')
-source('R/bayes_decay_model.R')
-library(greta)
 ```
-
-The most important information is about decay. Let's look at the log-transformed data here:
 
 ```{r}
-plot(decay_data$t, decay_data$mRem, pch = 20, cex = 0.4, 
-     xlab = 'time', 
-     ylab = 'mass')
+plot(decay_data$t, decay_data$mass_rem, 
+     pch = 20, cex = 0.4, 
+     xlab = 'Time (years)', ylab = 'Mass')
 ```
 
-I want to do a bayesian analysis of my decay. Here it is:
+Here I plot the log-transformed data using ggplot2. This is mainly to illustrate adding a package to my code, so forgive my aesthetically un-pleasing plot. 
 
 ```{r}
-mean_mass_predictions <- bayes_decay_model(decay_data)
-plot(decay_data$t, decay_data$mRem, pch = 20, cex = 0.4, 
-     xlab = 'time', 
-     ylab = 'mass')
-points(decay_data$t, mean_mass_predictions, pch = 20, col = 'red')
+library(ggplot2)
+ggplot(decay_data, aes(x = t, y = mRem)) + geom_point()
 ```
-
 
