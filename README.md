@@ -5,7 +5,7 @@
 
 In this repo I’ve included an example project associated with a
 presentation initially given at R-Ladies Montpellier called ‘Gold star
-reproducibility: straightwforward containerisation’. The presentation
+reproducibility: straightforward containerisation’. The presentation is
 included both as a keynote file (so you can enjoy the gifs) or as a pdf
 (static. sad face).
 
@@ -15,7 +15,7 @@ illustration. I’ve written a meagre rmarkdown file
 The idea behind [holepunch](http://github.com/karthik/holepunch) is that
 with a few simple functions you can set up your project so that it can
 be accessed in a container hosted on a server by [binder](mybinder.org).
-The readme is a fantastic resource.
+The readme for holepunch is a fantastic resource.
 
 In the presentation, I demo’d this workflow with the following steps of
 code, that prepared this repo. First, you write a description file.
