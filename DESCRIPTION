@@ -1,18 +1,18 @@
 Type: Compendium
-Package: Compendium title
-Title: What the Package Does (One Line, Title Case)
+Package: Holepunch Test Case
+Title: Holepunch Test Case
 Version: 0.0.1
 Authors@R: 
     person(given = "Saras",
            family = "Windecker",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: Compendium description
+           email = "saras.windecker@gmail.com")
+Description: This is a test repo to try out the holepunch package. 
 License: What license it uses
 Depends: 
-    greta,
+    ggplot2,
     knitr,
-    rmarkdown
+    rmarkdown,
+    tinytex
 Encoding: UTF-8
 LazyData: true
