@@ -52,7 +52,7 @@ This function prints the badge text to your console, that you can then
 paste into a readme file. Let’s take a look at ours now:
 
 [![Launch Rstudio
-Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/smwindecker/holepunch_test/master?urlpath=rstudio)
+Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/smwindecker/holepunch_rladies/master?urlpath=rstudio)
 
 A complete example for a paper can be found
 [here](https://github.com/Lingtax/PMT-flu-2018)\!
