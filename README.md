@@ -20,14 +20,14 @@ The readme for holepunch is a fantastic resource.
 In the presentation, I demo’d this workflow with the following steps of
 code, that prepared this repo. First, you write a description file.
 Holepunch finds the packages you use without you having to troll through
-and specify them. We can see in ours that it has added rmarkdown, knitr,
+and specify them. We can see in ours that in addition to ggplot2 it has added rmarkdown, knitr,
 and tinytex, which are needed to knit ‘my\_brilliant\_paper’.
 
 ``` r
 holepunch::write_compendium_description()
 ```
 
-I filled in my project name and description in the description file
+After it was created, I filled in my project name and description in the description file
 itself. Next, we use this description file to write up a docker file.
 
 ``` r
@@ -38,10 +38,10 @@ A dockerfile is basically the set of instructions that are used to
 prepare an ‘image’, where these items are downloaded. This image can be
 launched to open up a ‘container’ inside which you have everything you
 specified in the dockerfile. This is a non-computer scientists’ take on
-this complicated process. I apologise for brevity.
+this complicated process. 
 
-Last, we generate the link to our binder, so that we can advertise it
-and other can try and recreate our work inside a space that has
+Lastly, we generate the link to our binder, so that we can advertise it
+and others can try and recreate our work inside a space that has
 everything downloaded that is necessary to rerun the project.
 
 ``` r
@@ -59,4 +59,4 @@ A complete example for a paper can be found
 
 I will be revising this repo and its contents as I prepare to give this
 presentation in the future. Any comments are welcome. Happy
-containerising.
+containerising!
