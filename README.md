@@ -1,3 +1,6 @@
+---
+bibliography: bibliography.bib
+---
 
 # Gold star reproducibility: tools for reproducible research in R
 
@@ -74,4 +77,4 @@ A complete example for a paper can be found [here](https://github.com/Lingtax/PM
 
 Any comments on this repo are welcome. Happy containerising\!
 
-## References
+# References
