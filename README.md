@@ -8,7 +8,7 @@ This repository supports a presentation called ‘Gold star reproducibility' giv
 
 ## Why reproducibility?
 
-A key tenet of scientific research is that our conclusions and the results they depend upon can be reliably reproduced. We are increasingly aware that this is not the case for many scientific disciplines [@baker2016], for a variety of reasons. These include but are not limited to [@fidler2017]:
+A key tenet of scientific research is that our conclusions and the results they depend upon can be reliably reproduced. We are increasingly aware that this is not the case for many scientific disciplines (Baker 2016), for a variety of reasons. These include but are not limited to (Fidler et al. 2017):
 
 - publication bias
 - questionable research practices driven by a 'publish or perish' culture
@@ -17,11 +17,11 @@ A key tenet of scientific research is that our conclusions and the results they 
 
 ## So what do we do? 
 
-Tackling broader problems associated with irreproducibility requires systemic changes, but there are still steps individual researchers can take. Computational reproducibility, or the ability to rerun an analysis and get the same results, is one step. We have many open science tools to help us achieve this [@lowndes2017], some of which we discuss here. 
+Tackling broader problems associated with irreproducibility requires systemic changes, but there are still steps individual researchers can take. Computational reproducibility, or the ability to rerun an analysis and get the same results, is one step. We have many open science tools to help us achieve this (Lowndes et al. 2017), some of which we discuss here. 
 
 ## Compendium 
 
-Reproducible research relies upon an organisation system that holds all the components of a project together. We've begun to call this structure a research `compendium`, and is discussed in more detail in [@marwick2018].
+Reproducible research relies upon an organisation system that holds all the components of a project together. We've begun to call this structure a research `compendium`, and is discussed in more detail in (Marwick, Boettiger, and Mullen 2018).
 
 The key concepts for me, are: 
 
@@ -78,3 +78,10 @@ A complete example for a paper can be found [here](https://github.com/Lingtax/PM
 Any comments on this repo are welcome. Happy containerising\!
 
 # References
+Baker, Monya. 2016. “1,500 Scientists Lift the Lid on Reproducibility.” Nature News 533 (7604): 452. https://doi.org/10.1038/533452a.
+
+Fidler, Fiona, Yung En Chee, Bonnie C. Wintle, Mark A. Burgman, Michael A. McCarthy, and Ascelin Gordon. 2017. “Metaresearch for Evaluating Reproducibility in Ecology and Evolution.” BioScience 67 (3): 282–89. https://doi.org/10.1093/biosci/biw159.
+
+Lowndes, Julia S. Stewart, Benjamin D. Best, Courtney Scarborough, Jamie C. Afflerbach, Melanie R. Frazier, Casey C. O’Hara, Ning Jiang, and Benjamin S. Halpern. 2017. “Our Path to Better Science in Less Time Using Open Data Science Tools.” Nature Ecology & Evolution 1 (6): 0160. https://doi.org/10.1038/s41559-017-0160.
+
+Marwick, Ben, Carl Boettiger, and Lincoln Mullen. 2018. “Packaging Data Analytical Work Reproducibly Using R (and Friends).” e3192v2. PeerJ Inc. https://doi.org/10.7287/peerj.preprints.3192v2.
