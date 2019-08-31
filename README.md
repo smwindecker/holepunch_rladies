@@ -1,63 +1,80 @@
+---
+bibliography: bibliography.bib
+---
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+# Gold star reproducibility: tools for reproducible research in r 
 
-# Testing out holepunch for containerisation
+This repository supports a presentation called ‘Gold star reproducibility' given at r-Ladies Montpellier (2/7/19), r-Ladies Sydney (28/8/19), and University of New South Wales (28/8/19). The presentation is in the `rladies_containerisation.key` and `rladies_containerisation.pdf` files. I've written out some of my thoughts here, because there aren't a lot of details in the slides. 
 
-In this repo I’ve included an example project associated with a
-presentation initially given at R-Ladies Montpellier called ‘Gold star
-reproducibility: straightforward containerisation’. The presentation is
-included both as a keynote file (so you can enjoy the gifs) or as a pdf
-(static. sad face).
+## Why reproducibility?
 
-The example project is extremely simple, as it was only for
-illustration. I’ve written a meagre rmarkdown file
-(‘my\_brilliant\_paper’) that includes use of one package: ggplot2.
-The idea behind [holepunch](http://github.com/karthik/holepunch) is that
-with a few simple functions you can set up your project so that it can
-be accessed in a container hosted on a server by [binder](mybinder.org).
-The readme for holepunch is a fantastic resource.
+A key tenet of scientific research is that our conclusions and the results they depend upon can be reliably reproduced. We are increasingly aware that this is not the case for many scientific disciplines [@baker2016], for a variety of reasons. These include but are not limited to [@fidler2017]:
 
-In the presentation, I demo’d this workflow with the following steps of
-code, that prepared this repo. First, you write a description file.
-Holepunch finds the packages you use without you having to troll through
-and specify them. We can see in ours that in addition to ggplot2 it has
-added rmarkdown, knitr, and tinytex, which are needed to knit
-‘my\_brilliant\_paper’.
+- publication bias
+- questionable research practices driven by a 'publish or perish' culture
+- inadequate data reporting
+- insufficient data and code sharing
+
+## So what do we do? 
+
+Tackling broader problems associated with irreproducibility requires systemic changes, but there are still steps individual researchers can take. Computational reproducibility, or the ability to rerun an analysis and get the same results, is one step. We have many open science tools to help us achieve this [@lowndes2017], some of which we discuss here. 
+
+## Compendium 
+
+Reproducible research relies upon an organisation system that holds all the components of a project together. We've begun to call this structure a research `compendium`, and is discussed in more detail in [@marwick2018].
+
+The key concepts for me, are: 
+
+- organisation: separating your raw data from the code used to produce it
+- documentation: clear metadata, including dependencies
+- automation: a master script or other way (like the [drake](https://github.com/ropensci/drake) package workflows) to clarify the sequence of the components
+- dissemination: clear ways to share
+
+A range of R packages have been developed to make it easier to set up projects in line with these principles. There is a great list of these resources [here](https://github.com/jdblischak/r-project-workflows). 
+
+## Containerisation
+
+Even after setting up a project according to these principles, code can fail to reproduce. Have you ever had trouble re-running an analysis due to changes in one of the packages you used? Or had trouble sharing code with a collaborator because you're working on different versions of R? I have! 
+
+Containerisation is one solution. I'll give a brief explanation of concepts related to containerisation here, but disclaimer, I am not a computer scientist! I am attempting to explain these concepts in a way that would have helped me, a non-computer scientist, to grasp them more quickly. 
+
+Containerisation refers to creating a virtual computing environment. It is more lightweight than a virtual machine, because you only specify the exact items you would like to be installed in your environment, rather than having an entire ecosystem in it. It is popularly implemented with a software called [docker](https://www.docker.com/). 
+
+Although there are many ways to use docker, in the context of creating a computing environment for a compendium, there are three main terms important to understand. I'm going to make an analogy with tiny houses to explain them. Bear with the laboured analogy. 
+
+### Terms
+
+A **'dockerfile'** is the instructions for building up your tiny house. It says, take this set of building materials, and give me a kitchen, a loft, a portico and a window garden bed, please. But maybe instead it's, please give me R 3.6.0 and the `tidyverse`. A dockerfile can live on your computer, or you can push it up to something like Github to share it. 
+
+A **'docker image'** is a built tiny house. You've taken the instructions in your Dockerfile and built the additions to your house. A docker image is your built virtual environment containing the installed versions of everything you specified. This built image can live on your computer or you can push it up to the cloud, such as to [dockerhub](http://dockerhub.com), where other people can use it.
+
+A **'docker container'** is an instance of stepping inside your tiny house. You have driven it to Banff, or wherever your dream destination is, everything you need (that you specified in the build...) is there and you finally step in. A docker container is an instance of entering your virtual environment. Once there, you can make use of everything you specified in the build. 
+
+Whew. Hope that went down well. 
+
+### Tools
+
+There are many tools and packages to build the bridge between R and docker. [containerit](https://github.com/o2r-project/containerit) and [holepunch](http://github.com/karthik/holepunch) are two such packages. Both help to automatically create a dockerfile. `containerit` is a great resource and very flexible. I demonstrate `holepunch` here for two reasons that are also tied to the main functions:
+
+1. `holepunch` helps users automatically populate a `DESCRIPTION` file with meta data including the packages the project uses, and then leverages this to add the packages to the dockerfile. The resulting dockerfile can be found in the `.binder` folder. I like this approach because it builds on the principles of research compendiums by encouraging transparent meta data. 
 
 ``` r
 holepunch::write_compendium_description()
+holepunch::write_dockerfile()
 ```
 
-I filled in my project name and description in the description file
-itself. Next, we use this description file to write up a docker file.
-
-``` r
-holepunch::write_dockerfile('Saras Windecker')
-```
-
-A dockerfile is basically the set of instructions that are used to
-prepare an ‘image’, where these items are downloaded. This image can be
-launched to open up a ‘container’ inside which you have everything you
-specified in the dockerfile. This is a non-computer scientists’ take on
-this complicated process.
-
-Lastly, we generate the link to our binder, so that we can advertise it
-and others can try and recreate our work inside a space that has
-everything downloaded that is necessary to rerun the project.
-
+2. `holepunch` does not require docker to be pre-installed. This provides an good starting point to begin learning about how to employ docker and to begin to containerise repositories without the headaches of installation. Typically, it is necessary to have docker installed on your computer so that it can build the docker image from your dockerfile. Instead, `holepunch` relies on [binder](http://mybinder.org) to build the docker image for you. One consequence of this is that you cannot, for example, push it to docker hub as a built image for others to use.
+  
 ``` r
 holepunch::generate_badge()
 ```
 
-This function prints the badge text to your console, that you can then
-paste into a readme file. Let’s take a look at ours now:
+This function produces the text to paste into a `README` file so there is an easy link to open the binder instance of your project. Let’s take a look at ours now:
 
-[![Launch Rstudio
-Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/smwindecker/holepunch_rladies/master?urlpath=rstudio)
+[![Launch Rstudio Binder](http://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/smwindecker/holepunch_rladies/master?urlpath=rstudio)
 
-A complete example for a paper can be found
-[here](https://github.com/Lingtax/PMT-flu-2018)\!
+A complete example for a paper can be found [here](https://github.com/Lingtax/PMT-flu-2018)\!
 
-I will be revising this repo and its contents as I prepare to give this
-presentation in the future. Any comments are welcome. Happy
-containerising\!
+Any comments on this repo are welcome. Happy containerising\!
+
+# References
