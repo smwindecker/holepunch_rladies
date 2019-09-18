@@ -1,6 +1,6 @@
 # Gold star reproducibility: tools for reproducible research in R
 
-This repository supports a presentation called ‘Gold star reproducibility' given at R-Ladies Montpellier (2/7/19), R-Ladies Sydney (28/8/19), and University of New South Wales (28/8/19). The presentation is in the `rladies_reproducibility.key` and `rladies_reproducibility.pdf` files. I've written out some of my thoughts here, because there aren't a lot of details in the slides. 
+This repository supports a presentation called ‘Gold star reproducibility' given at R-Ladies Montpellier (2/7/19), R-Ladies Sydney (28/8/19), University of New South Wales (28/8/19), and R-Ladies Melbourne (18/9/19). The presentation is in the `rladies_reproducibility.key` and `rladies_reproducibility.pdf` files. I've written out some of my thoughts here, because there aren't a lot of details in the slides. 
 
 ## Why reproducibility?
 
